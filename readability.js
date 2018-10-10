@@ -1,7 +1,7 @@
 /*jslint undef: true, nomen: true, eqeqeq: true, plusplus: true, newcap: true, immed: true, browser: true, devel: true, passfail: false */
 /*global window: false, readConvertLinksToFootnotes: false, readStyle: false, readSize: false, readMargin: false, Typekit: false, ActiveXObject: false */
 
-/*2018-10-10 support change of limit chars to drop global readMinTextLegth
+/*2018-10-10 support change of limit chars to drop global readMinTextLength
 
 var dbg = (typeof console !== 'undefined') ? function(s) {
     console.log("Readability: " + s);
@@ -32,7 +32,7 @@ var readability = {
     flags:                   0x1 | 0x2 | 0x4,   /* Start with all flags set. */
 
 	titleFromH1:			false, /* hack 2018-10-10 do not delete H1 if title not from H1 */	
-	readMinTextLegth:		3, /* 25->3 hack 2018-10-10 16:43 allow custom length for dropping */
+	readMinTextLength:		3, /* 25->3 hack 2018-10-10 16:43 allow custom length for dropping */
 
     /* constants */
     FLAG_STRIP_UNLIKELYS:     0x1,
@@ -84,8 +84,8 @@ var readability = {
         readability.removeScripts(document);
 
 		/* 2018-10-10 16:46 */
-        if(typeof(readMinTextLegth) !== 'undefined' && readMinTextLegth > 0) {
-            readability.readMinTextLegth = readMinTextLegth;
+        if(typeof(readMinTextLength) !== 'undefined' && readMinTextLength > 0) {
+            readability.readMinTextLength = readMinTextLength;
         }
 
 
@@ -805,8 +805,8 @@ var readability = {
                 continue;
             }
 
-            /* If this paragraph is less than 25 characters, don't even count it. 2018-10-10 16:47 readability.readMinTextLegth*/
-            if(innerText.length < readability.readMinTextLegth) {  
+            /* If this paragraph is less than 25 characters, don't even count it. 2018-10-10 16:47 readability.readMinTextLength*/
+            if(innerText.length < readability.readMinTextLength) {  
                 continue; }
 
             /* Initialize readability data for the parent. */
