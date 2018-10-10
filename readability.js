@@ -29,6 +29,8 @@ var readability = {
     bodyCache:               null,   /* Cache the body HTML in case we need to re-use it later */
     flags:                   0x1 | 0x2 | 0x4,   /* Start with all flags set. */
 
+	titleFromH1:			false, /* hack 2018-10-10 do not delete H1 if title not from H1 */	
+
     /* constants */
     FLAG_STRIP_UNLIKELYS:     0x1,
     FLAG_WEIGHT_CLASSES:      0x2,
@@ -332,6 +334,7 @@ var readability = {
             if(hOnes.length === 1)
             {
                 curTitle = readability.getInnerText(hOnes[0]);
+                readability.titleFromH1 = true;
             }
         }
 
@@ -356,15 +359,13 @@ var readability = {
         var articleFooter = document.createElement("DIV");
         articleFooter.id = "readFooter";
         articleFooter.innerHTML = [
-        "<div id='rdb-footer-print'>Excerpted from <cite>" + document.title + "</cite><br />" + window.location.href + "</div>",
+        "<div id='rdb-footer-print'><br />Excerpted from <cite>" + document.title + "</cite><br />" + window.location.href + "</div>",
         "<div id='rdb-footer-wrapper'>",
              "<div id='rdb-footer-left'>",
-                 "<a href='http://kerrick.github.com/readability-js/' id='readability-logo'>Readability JS</a> &mdash;",
-                 " <a href='https://github.com/Kerrick/readability-js'>An open source project</a>",
-                 " <span id='readability-attribution'>based on <a href='http://lab.arc90.com/experiments/readability'>An Arc90 Laboratory Experiment</a></span>",
+                 "<a href='https://github.com/onegrasshopper/readability-js/' id='readability-logo'>Readability JS tweaks</a>",
              "</div>",
              "<div id='rdb-footer-right'>",
-                 "<span class='version'>Readability version " + readability.version + "</span>",
+                 "<span class='version'>tweaked version " + readability.version + "</span>",
              "</div>",
         "</div>"].join('');
 
@@ -606,15 +607,19 @@ var readability = {
         /* Clean out junk from the article content */
         readability.cleanConditionally(articleContent, "form");
         readability.clean(articleContent, "object");
-        readability.clean(articleContent, "h1");
+        if (readability.titleFromH1) { readability.clean(articleContent, "h1");}
 
         /**
          * If there is only one h2, they are probably using it
          * as a header and not a subheader, so remove it since we already have a header.
         ***/
+        
+        /* what?? why 2018-10-10
         if(articleContent.getElementsByTagName('h2').length === 1) {
             readability.clean(articleContent, "h2");
         }
+        */
+        
         readability.clean(articleContent, "iframe");
 
         readability.cleanHeaders(articleContent);
@@ -657,6 +662,10 @@ var readability = {
         switch(node.tagName) {
             case 'DIV':
                 node.readability.contentScore += 5;
+                break;
+
+			case 'SPAN': /*tweak 2018-10-10 span tag useful text */
+                node.readability.contentScore += 4;
                 break;
 
             case 'PRE':
