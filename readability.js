@@ -1,7 +1,7 @@
 /*jslint undef: true, nomen: true, eqeqeq: true, plusplus: true, newcap: true, immed: true, browser: true, devel: true, passfail: false */
 /*global window: false, readConvertLinksToFootnotes: false, readStyle: false, readSize: false, readMargin: false, Typekit: false, ActiveXObject: false */
 
-/*2018-10-10 support change of limit chars to drop global readMinTextLength
+/*2018-10-10 support change of limit chars to drop global readMinTextLength */
 
 var dbg = (typeof console !== 'undefined') ? function(s) {
     console.log("Readability: " + s);
