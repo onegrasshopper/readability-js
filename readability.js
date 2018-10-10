@@ -29,6 +29,8 @@ var readability = {
     bodyCache:               null,   /* Cache the body HTML in case we need to re-use it later */
     flags:                   0x1 | 0x2 | 0x4,   /* Start with all flags set. */
 
+	titleFromH1:			false, /* hack 2018-10-10 do not delete H1 if title not from H1 */	
+
     /* constants */
     FLAG_STRIP_UNLIKELYS:     0x1,
     FLAG_WEIGHT_CLASSES:      0x2,
@@ -332,6 +334,7 @@ var readability = {
             if(hOnes.length === 1)
             {
                 curTitle = readability.getInnerText(hOnes[0]);
+                readability.titleFromH1 = true;
             }
         }
 
@@ -604,15 +607,19 @@ var readability = {
         /* Clean out junk from the article content */
         readability.cleanConditionally(articleContent, "form");
         readability.clean(articleContent, "object");
-        readability.clean(articleContent, "h1");
+        if (readability.titleFromH1) { readability.clean(articleContent, "h1");}
 
         /**
          * If there is only one h2, they are probably using it
          * as a header and not a subheader, so remove it since we already have a header.
         ***/
+        
+        /* what?? why 2018-10-10
         if(articleContent.getElementsByTagName('h2').length === 1) {
             readability.clean(articleContent, "h2");
         }
+        */
+        
         readability.clean(articleContent, "iframe");
 
         readability.cleanHeaders(articleContent);
