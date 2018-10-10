@@ -359,7 +359,7 @@ var readability = {
         "<div id='rdb-footer-print'><br />Excerpted from <cite>" + document.title + "</cite><br />" + window.location.href + "</div>",
         "<div id='rdb-footer-wrapper'>",
              "<div id='rdb-footer-left'>",
-                 "<a href='https://github.com/onegrasshopper/readability-js/' id='readability-logo'>Readability JS tweaks</a> &mdash;",
+                 "<a href='https://github.com/onegrasshopper/readability-js/' id='readability-logo'>Readability JS tweaks</a>",
              "</div>",
              "<div id='rdb-footer-right'>",
                  "<span class='version'>tweaked version " + readability.version + "</span>",

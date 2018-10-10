@@ -8,12 +8,10 @@ body { font-size: 10px; line-height: 1; }
 #readInner h1 { display: block; width: 100%; border-bottom: 1px solid rgb(51, 51, 51); font-size: 1.2em; padding-bottom: 0.5em; margin-bottom: 0.75em; }
 #readability-footnotes { clear: both; }
 #rdb-footer-wrapper { display: block; border-top: 1px solid rgb(51, 51, 51); clear: both; overflow: hidden; margin: 2em 0px; }
-#rdb-footer-left { display: inline; float: left; margin-top: 15px; width: 285px; background-position: 0px -36px; }
 #rdb-footer-left a, #rdb-footer-left a:link { float: left; }
 #readability-logo { display: inline; background-position: 0px -36px; height: 29px; width: 189px; text-indent: -9000px; }
-#rdb-footer-right { display: inline; float: right; text-align: right; font-size: 0.75em; margin-top: 18px; }
 #rdb-footer-print { display: block !important; font-size: 0.85em; text-align: right; margin-bottom: 1.5em; }
-#readability-url, .rdbTypekit #rdb-footer-right .footer-twitterLink, span.version { display: none; }
+#rdb-footer-left, #rdb-footer-right, #readability-url, .rdbTypekit #rdb-footer-right .footer-twitterLink, span.version { display: none; }
 #readTools { width: 34px; height: 150px; position: fixed; z-index: 100; top: 10px; left: 10px; }
 #readTools a { overflow: hidden; margin-bottom: 8px; display: block; opacity: 0.4; text-indent: -99999px; height: 34px; width: 34px; text-decoration: none; }
 #reload-page { background-position: 0px 0px; }
