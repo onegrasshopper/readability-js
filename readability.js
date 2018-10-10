@@ -664,6 +664,10 @@ var readability = {
                 node.readability.contentScore += 5;
                 break;
 
+			case 'SPAN': /*tweak 2018-10-10 span tag useful text */
+                node.readability.contentScore += 4;
+                break;
+
             case 'PRE':
             case 'TD':
             case 'BLOCKQUOTE':
