@@ -356,15 +356,13 @@ var readability = {
         var articleFooter = document.createElement("DIV");
         articleFooter.id = "readFooter";
         articleFooter.innerHTML = [
-        "<div id='rdb-footer-print'>Excerpted from <cite>" + document.title + "</cite><br />" + window.location.href + "</div>",
+        "<div id='rdb-footer-print'><br />Excerpted from <cite>" + document.title + "</cite><br />" + window.location.href + "</div>",
         "<div id='rdb-footer-wrapper'>",
              "<div id='rdb-footer-left'>",
-                 "<a href='http://kerrick.github.com/readability-js/' id='readability-logo'>Readability JS</a> &mdash;",
-                 " <a href='https://github.com/Kerrick/readability-js'>An open source project</a>",
-                 " <span id='readability-attribution'>based on <a href='http://lab.arc90.com/experiments/readability'>An Arc90 Laboratory Experiment</a></span>",
+                 "<a href='https://github.com/onegrasshopper/readability-js/' id='readability-logo'>Readability JS tweaks</a> &mdash;",
              "</div>",
              "<div id='rdb-footer-right'>",
-                 "<span class='version'>Readability version " + readability.version + "</span>",
+                 "<span class='version'>tweaked version " + readability.version + "</span>",
              "</div>",
         "</div>"].join('');
 
